@@ -10,9 +10,9 @@ export default function Quiz() {
 // boilerplate flask
   const handleSubmit = async (e) => {
     e.preventDefault();  // Prevent page reload on form submit
-    try {
-      const res = await axios.post('http://localhost:5000/api/send-text', { text });
-      setResponse(res.data.message);  // Set response from Flask API
+    try { // Set response from Flask API
+      const res = await axios.post('http://localhost:5000/api/send-text', { text: inputText });
+      console.log(res.data.status);
     } catch (error) {
       console.error("There was an error!", error);
     }
@@ -29,9 +29,6 @@ export default function Quiz() {
     // TODO
     return console.log("submit");
   }
-  const handleSubmit = () => {
-    
-  };
 
   return (
     <div className="container mx-auto px-4">

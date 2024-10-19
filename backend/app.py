@@ -8,8 +8,9 @@ CORS(app)  # Enable CORS to allow communication between React and Flask
 @app.route('/api/send-text', methods=['POST'])
 def handle_text():
     data = request.get_json()
-    input_text = data.get('text', '')
-    return jsonify({'message': f'You sent: {input_text}'})
+    input_text = data.get('message', 'working')
+    print(f'Received message: {input_text}')
+    return jsonify({"status": "worked"})
 
 if __name__ == '__main__':
     app.run(debug=True)
