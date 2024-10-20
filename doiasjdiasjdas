@@ -1,0 +1,146 @@
+[33mcommit 07ea8b31430e29e151f997fe194b48d412126208[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mflask[m[33m)[m
+Author: Ryan <duongryan139@gmail.com>
+Date:   Sun Oct 20 00:19:00 2024 -0700
+
+    number of questions
+
+[33mcommit 9602e56cb42d4d7ff5878044e84ed0350e3786b7[m
+Author: Ryan <duongryan139@gmail.com>
+Date:   Sat Oct 19 23:59:24 2024 -0700
+
+    added number of questions box
+
+[33mcommit e5a13de21d750161d8d9c8adc2a7c51e886b52ba[m
+Author: Brendan Ly <brendanly4@gmail.com>
+Date:   Sat Oct 19 22:10:39 2024 -0700
+
+    improved buttons
+
+[33mcommit 42dde7164d0df607675708e75f61b9a328cc2971[m
+Author: Brendan Ly <brendanly4@gmail.com>
+Date:   Sat Oct 19 21:28:12 2024 -0700
+
+    Quiz answer sheet displayed
+
+[33mcommit 65e260f8bad090453c6aa28852b295166cc938b1[m
+Author: Brendan Ly <brendanly4@gmail.com>
+Date:   Sat Oct 19 21:00:27 2024 -0700
+
+    Fixed JSON and frontend output
+
+[33mcommit a9c6ab588fe93339d12aac8044b23360301991d8[m
+Author: Brendan Ly <brendanly4@gmail.com>
+Date:   Sat Oct 19 19:29:24 2024 -0700
+
+    added back submit button
+
+[33mcommit 199365679da23e66b2756981310e54f4a8fa43d7[m
+Merge: 5845818 e16e9c2
+Author: Ryan <duongryan139@gmail.com>
+Date:   Sat Oct 19 18:26:23 2024 -0700
+
+    Merge branch 'improved-home-page' into flask
+
+[33mcommit e16e9c2b6d6e5fe8635b50091d172212a9370a23[m
+Author: Brendan Ly <brendanly4@gmail.com>
+Date:   Sat Oct 19 18:16:14 2024 -0700
+
+    new improved home-page
+
+[33mcommit 5845818ed18107d6ee79be0a65cbf37f4c9f62ef[m
+Author: Ryan <duongryan139@gmail.com>
+Date:   Sat Oct 19 17:58:55 2024 -0700
+
+    working gemini query from react text field and submit
+
+[33mcommit b18ac7491ab14ade1fb1dcbb706903224451e35e[m
+Author: raoot <sakinabluer@gmail.com>
+Date:   Sat Oct 19 17:27:43 2024 -0700
+
+    menu fix
+
+[33mcommit db54aa385c7a29a131905250456a1fdfa5fc3776[m
+Author: raoot <sakinabluer@gmail.com>
+Date:   Sat Oct 19 16:42:25 2024 -0700
+
+    home page + initial menu sidebar
+
+[33mcommit f9bc5ed02b998e56d0e1520c5982237738050313[m
+Author: Ryan <duongryan139@gmail.com>
+Date:   Sat Oct 19 15:27:17 2024 -0700
+
+    updated with basic post method and flask
+
+[33mcommit eb4f8d28146f42e891324ac8e3e7ca23323c6196[m
+Author: Ryan <duongryan139@gmail.com>
+Date:   Sat Oct 19 14:19:23 2024 -0700
+
+    environment
+
+[33mcommit b04e32d4ff56494cb54c6f4c1c40c6a683ea2820[m
+Merge: 2749143 fa34832
+Author: Ryan <duongryan139@gmail.com>
+Date:   Sat Oct 19 13:53:01 2024 -0700
+
+    fix
+
+[33mcommit 2749143fd7dd11b82932c44054c171f484714692[m
+Author: Ryan <duongryan139@gmail.com>
+Date:   Sat Oct 19 13:49:00 2024 -0700
+
+    env commit
+
+[33mcommit fa348322d91034cd2775f3b2fc1604115b4092b6[m
+Author: Brendan Ly <brendanly4@gmail.com>
+Date:   Sat Oct 19 13:45:24 2024 -0700
+
+    added submit button
+
+[33mcommit 4695a4b546c1db527a3f7786a35d486026e10d41[m
+Author: Ryan <duongryan139@gmail.com>
+Date:   Sat Oct 19 13:37:54 2024 -0700
+
+    setup env
+
+[33mcommit f9ba4ea60b8c80bdb552b11b1362ac2ff330b5c8[m
+Author: Brendan Ly <brendanly4@gmail.com>
+Date:   Sat Oct 19 13:00:41 2024 -0700
+
+    env changes
+
+[33mcommit 7975bb2226f71a95d4777555e10c1326bd2f3583[m[33m ([m[1;32mhome-page[m[33m)[m
+Author: Brendan Ly <brendanly4@gmail.com>
+Date:   Sat Oct 19 12:10:28 2024 -0700
+
+    text box
+
+[33mcommit 23dbc203544a760bbb8809b552ef57e43c75d252[m
+Author: Brendan Ly <brendanly4@gmail.com>
+Date:   Sat Oct 19 08:25:47 2024 -0700
+
+    page routing
+
+[33mcommit 1de893a79dad4f2355e5f7c68b2baf6297d0fd1e[m
+Author: Brendan Ly <brendanly4@gmail.com>
+Date:   Sat Oct 19 07:29:40 2024 -0700
+
+    new branch
+
+[33mcommit 5345b847a8e22293ebe1255c206afe34afc1935c[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Merge: e9d4004 01bdf0d
+Author: Brendan Ly <brendanly4@gmail.com>
+Date:   Sat Oct 19 07:20:43 2024 -0700
+
+    Project initialization
+
+[33mcommit e9d400495b2367dd5529d5d32d4e9ddf683b1c90[m
+Author: Brendan Ly <brendanly4@gmail.com>
+Date:   Sat Oct 19 07:10:48 2024 -0700
+
+    Project initialization
+
+[33mcommit 01bdf0d2437f95f6d0f08434a43d1903a10276d8[m
+Author: Brendan Ly <147233685+brendan-ly@users.noreply.github.com>
+Date:   Sat Oct 19 07:07:15 2024 -0700
+
+    Initial commit
