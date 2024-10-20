@@ -11,24 +11,19 @@ export default function Quiz() {
   const handleSubmit = async (e) => {
     e.preventDefault();  // Prevent page reload on form submit
     try { // Set response from Flask API
-      const res = await axios.post('http://localhost:5000/api/send-text', { text: inputText });
-      console.log(res.data.status);
-    } catch (error) {
+      const res = await axios.post('http://localhost:5000/send-text',  { inputText })
+    } 
+    catch (error) {
       console.error("There was an error!", error);
     }
   };
 
   const INPUT_CLASS =
-    "w-full max-w-2xl indent-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6";
+    "w-full max-w-2xl indent-2 rounded-mhud border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6";
 
   const handleInputChange = (e) => {
     setInputText(e.target.value);
   };
-
-  const handleInputSubmit = (e) => {
-    // TODO
-    return console.log("submit");
-  }
 
   return (
     <div className="container mx-auto px-4">
