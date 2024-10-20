@@ -1,5 +1,7 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from "react";
+import logo from '/src/img/logo-v2-transparent.png';
 
 export default function Quiz() {
   const [questions, setQuestions] = useState([]);
@@ -11,24 +13,36 @@ export default function Quiz() {
     setInputText(e.target.value);
   };
 
+  const navigate = useNavigate()
+
+  const handleButtonClick = () => {
+    navigate('/')
+  }
+
   return (
     <div className="container mx-auto mt-8">
       <div className="flex">
-        <div className="w-1/4 bg-gray-100 p-4 rounded-lg shadow-md">
-          <h4 className="text-xl font-semibold mb-4">Menu</h4>
+        <div className="w-1/4 bg-newpurple-500 p-8 rounded-none shadow-md">
+          <h4 className="text-xl font-semibold text-white mb-4"><img src={logo} alt="Logo" width={50}/>Menu</h4>
           <ul className="space-y-2">
+          <li>
+              <button onClick = {handleButtonClick} className="w-full text-left p-2 text-white hover:bg-newpurple-700">
+                Home
+              </button>
+            </li>
+            
             <li>
-              <button className="w-full text-left p-2 bg-newpurple-500 text-white rounded-md hover:bg-newpurple-700">
+              <button className="w-full text-left p-2 text-white hover:bg-newpurple-700">
                 Quiz 1
               </button>
             </li>
             <li>
-              <button className="w-full text-left p-2 bg-newpurple-500 text-white rounded-md hover:bg-newpurple-700">
+              <button className="w-full text-left p-2 text-white hover:bg-newpurple-700">
                 Quiz 2
               </button>
             </li>
             <li>
-              <button className="w-full text-left p-2 bg-newpurple-500 text-white rounded-md hover:bg-newpurple-700">
+              <button className="w-full text-left p-2 text-white hover:bg-newpurple-700">
                 Quiz 3
               </button>
             </li>
@@ -53,7 +67,7 @@ export default function Quiz() {
             <input // set to output later
               type="text"
               placeholder="Assistant feedback"
-              className="absolute bottom-0 w-full max-w-2xl indent-2 rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-newpurple-500 sm:text-sm sm:leading-6"
+              className="absolute bottom-2 w-full max-w-2xl indent-2 pt-10 rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-newpurple-500 sm:text-sm sm:leading-6"
             />
           </div>
         </div>
