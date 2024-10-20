@@ -20,7 +20,6 @@ export default function Quiz() {
       });
       console.log(res.data);
       setResponse(res.data);
-
     } catch (error) {
       console.error("There was an error!", error);
     }
@@ -103,20 +102,37 @@ export default function Quiz() {
               className="absolute bottom-2 w-full max-w-2xl indent-2 pt-10 rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-newpurple-500 sm:text-sm sm:leading-6"
             />
           </div>
-          {
-            response && <>
-            
-        {JSON.stringify(response)}
+          {response && (
+            <>
+              {/* {JSON.stringify(response)} */}
 
-        <ul>
+              {/* <ul>
           
           {response.questions.map((q) => <li>
             {JSON.stringify(q)}
           </li>)}
 
-        </ul>
-        </>
-          }
+        </ul> */}
+
+              <div className="mt-4">
+                {response.questions.map((question, index) => (
+
+                  <div key={index} className="mb-4">
+
+                    <p className="font-bold">{question.question}</p>
+
+                    <ul>
+                      {question.answer.map((option, idx) => (
+                        <li key={idx}>{option}</li>
+                        
+                      ))}
+                    </ul>
+                    <p className="text-green-500">Answer: {question.key}</p>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
