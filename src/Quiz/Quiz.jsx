@@ -14,7 +14,7 @@ export default function Quiz() {
   const [loading, setLoading] = useState(true);
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent page reload on form submit
+    e.preventDefault();
     try {
       // Set response from Flask API
       const res = await axios.post("http://localhost:5000/send-text", {
