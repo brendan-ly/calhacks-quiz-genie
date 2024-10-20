@@ -7,7 +7,8 @@ import logo from "/src/img/logo-v2-transparent.png";
 export default function Quiz() {
   const [questions, setQuestions] = useState([]);
   const [inputText, setInputText] = useState("");
-  const [response, setResponse] = useState("");
+  // const [response, setResponse] = useState("");
+  const [response, setResponse] = useState(null);
 
   // boilerplate flask
   const handleSubmit = async (e) => {
@@ -17,6 +18,9 @@ export default function Quiz() {
       const res = await axios.post("http://localhost:5000/send-text", {
         inputText,
       });
+      console.log(res.data);
+      setResponse(res.data);
+
     } catch (error) {
       console.error("There was an error!", error);
     }
@@ -99,6 +103,20 @@ export default function Quiz() {
               className="absolute bottom-2 w-full max-w-2xl indent-2 pt-10 rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-newpurple-500 sm:text-sm sm:leading-6"
             />
           </div>
+          {
+            response && <>
+            
+        {JSON.stringify(response)}
+
+        <ul>
+          
+          {response.questions.map((q) => <li>
+            {JSON.stringify(q)}
+          </li>)}
+
+        </ul>
+        </>
+          }
         </div>
       </div>
     </div>
