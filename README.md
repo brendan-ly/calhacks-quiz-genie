@@ -1,8 +1,8 @@
-# React + Vite
+Quiz Genie
+Quiz Genie is an AI-powered quiz generator that creates customizable practice quizzes based on your notes or selected subjects. Enhance your study sessions with tailored quizzes designed to reinforce your knowledge and boost your learning efficiency.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Features
+AI-Driven Quiz Creation: Generate quizzes instantly using advanced AI algorithms.
+Customizable Topics: Input your notes or select specific subjects for focused practice.
+Varied Question Types: Multiple-choice, true/false, and open-ended questions.
+User-Friendly Interface: Intuitive design for seamless quiz generation and interaction.
