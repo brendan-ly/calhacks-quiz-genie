@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import logo from "/src/img/logo-v2-transparent.png";
-import QuizButton from "./QuizButton"
+import QuizButton from "./QuizButton";
 
 export default function Quiz() {
   const [questions, setQuestions] = useState([]);
@@ -13,49 +13,52 @@ export default function Quiz() {
   const [score, setScore] = useState(0);
   const [quizStarted, setQuizStarted] = useState(false);
   const [quizFinished, setQuizFinished] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const [questionNumber, setQuestionsNumber] = useState("");
 
   const startQuiz = () => {
-    setQuizStarted(true)
-    setQuizFinished(false)
-    setCurrentQuestionIndex(0)
-    setScore(0)
-  }
+    setQuizStarted(true);
+    setQuizFinished(false);
+    setCurrentQuestionIndex(0);
+    setScore(0);
+  };
 
   const buttonColor = {
-    'right': 'green',
-    'wrong': 'red',
-    'unclicked': "text-left py-3 px-4 h-auto whitespace-normal bg-newpurple-500 text-white rounded-md hover:bg-blue-600 max-w-96"
-  }
+    right: "green",
+    wrong: "red",
+    unclicked:
+      "text-left py-3 px-4 h-auto whitespace-normal bg-newpurple-500 text-white rounded-md hover:bg-blue-600 max-w-96",
+  };
 
   const handleQuizButtonClick = (e) => {
-    return 
-  }
+    return;
+  };
   const handleNumberChange = (e) => {
     setQuestionsNumber(e.target.value);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     setResponse(null);
     try {
       // Set response from Flask API
       const res = await axios.post("http://localhost:5000/send-text", {
-        inputText, questionNumber
+        inputText,
+        questionNumber,
       });
       console.log(res.data);
       setResponse(res.data);
-      setLoading(false)
-
+      setLoading(false);
     } catch (error) {
       console.error("There was an error!", error);
-      setLoading(false)
+      setLoading(false);
     }
   };
 
-  const INPUT_CLASS = "w-full max-w-2xl indent-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-newpurple-500 sm:text-sm sm:leading-6";
+  const INPUT_CLASS =
+    "w-full max-w-2xl indent-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-newpurple-500 sm:text-sm sm:leading-6";
 
   const handleInputChange = (e) => {
     setInputText(e.target.value);
@@ -70,9 +73,9 @@ export default function Quiz() {
   return (
     <div className="flex min-h-screen">
       <div className="flex">
-        <div className="w-1/4 bg-newpurple-500 p-8 rounded-none shadow-md flex flex-col items-center">
-          <h4 className="text-xl font-semibold text-primary-foreground mb-4 flex flex-col items-center">
-            <img src={logo} alt="Logo" width={80} />
+        <div className="bg-newpurple-500 p-8 rounded-none shadow-md flex flex-col items-center">
+          <h4 className="text-xl text-white font-semibold text-primary-foreground mb-4 flex flex-col items-center">
+            <img src={logo} alt="Logo" width={100} />
             Menu
           </h4>
           <ul className="space-y-2">
@@ -85,7 +88,7 @@ export default function Quiz() {
               </button>
             </li>
 
-            <li>
+            {/* <li>
               <button className="w-full text-left p-2 text-white hover:bg-newpurple-700">
                 Quiz 1
               </button>
@@ -99,7 +102,7 @@ export default function Quiz() {
               <button className="w-full text-left p-2 text-white hover:bg-newpurple-700">
                 Quiz 3
               </button>
-            </li>
+            </li> */}
           </ul>
         </div>
 
@@ -121,12 +124,14 @@ export default function Quiz() {
             <input
               type="number"
               placeholder="Number of questions"
-              className={"w-full max-w-96 indent-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-newpurple-500 sm:text-sm sm:leading-6"}
+              className={
+                "w-full max-w-96 indent-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-newpurple-500 sm:text-sm sm:leading-6"
+              }
               value={questionNumber}
               onChange={handleNumberChange}
               max={10}
               min={1}
-            /> 
+            />
             <button
               className="bg-newpurple-500 hover:bg-newpurple-700 text-white px-4 py-2 rounded-md"
               onClick={handleSubmit}
@@ -135,30 +140,32 @@ export default function Quiz() {
             </button>
           </form>
 
-            {response && (
-              <>
+          <div> {loading ? <p> Loading...</p> : null} </div>
+          {response && (
+            <>
+              <div className="mt-4">
+                {response.questions.map((question, index) => (
+                  <div key={index} className="mb-4">
+                    <p className="center-align font-bold mb-3">
+                      {index + 1}. {question.question}
+                    </p>
 
-                <div className="mt-4">
-                  {response.questions.map((question, index) => (
-                    <div key={index} className="mb-4">
-                      <p className="center-align font-bold mb-3">
-                        {index + 1}. {question.question}
-                      </p>
-
-                      <div className="flex flex-col space-y-2">
-                        {question.answer.map((option, idx) => (
-                          // <li key={idx}>{option}</li>
-                          <QuizButton key={idx} id = {idx} isCorrect={option === question.key}
-                          text={option} />
-                        ))}
-                      </div>
-                      <p className="text-green-500">Answer: {question.key}</p>
+                    <div className="flex flex-col space-y-2">
+                      {question.answer.map((option, idx) => (
+                        <QuizButton
+                          key={idx}
+                          id={idx}
+                          isCorrect={option === question.key}
+                          text={option}
+                        />
+                      ))}
                     </div>
-                  ))}
-                </div>
-              </>
-            )}
-
+                    {/* <p className="text-green-500">Answer: {question.key}</p> */}
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
