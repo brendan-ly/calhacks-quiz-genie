@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from "react";
 
 const QuizButton = ({ 
-    key, 
+    id, 
     text,
     backgroundColor = '#423B70',
     status = 'unclicked',

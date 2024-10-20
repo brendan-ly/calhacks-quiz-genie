@@ -39,6 +39,7 @@ export default function Quiz() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setResponse(null);
     try {
       // Set response from Flask API
       const res = await axios.post("http://localhost:5000/send-text", {
@@ -67,11 +68,11 @@ export default function Quiz() {
   };
 
   return (
-    <div className="container mx-auto mt-8">
+    <div className="flex min-h-screen">
       <div className="flex">
-        <div className="w-1/4 bg-newpurple-500 p-8 rounded-none shadow-md">
-          <h4 className="text-xl font-semibold text-white mb-4">
-            <img src={logo} alt="Logo" width={50} />
+        <div className="w-1/4 bg-newpurple-500 p-8 rounded-none shadow-md flex flex-col items-center">
+          <h4 className="text-xl font-semibold text-primary-foreground mb-4 flex flex-col items-center">
+            <img src={logo} alt="Logo" width={80} />
             Menu
           </h4>
           <ul className="space-y-2">
@@ -147,7 +148,7 @@ export default function Quiz() {
                       <div className="flex flex-col space-y-2">
                         {question.answer.map((option, idx) => (
                           // <li key={idx}>{option}</li>
-                          <QuizButton key={idx} isCorrect={option === question.key}
+                          <QuizButton key={idx} id = {idx} isCorrect={option === question.key}
                           text={option} />
                         ))}
                       </div>
