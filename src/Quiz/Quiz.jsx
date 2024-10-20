@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import logo from "/src/img/logo-v2-transparent.png";
+import QuizButton from "./QuizButton"
 
 export default function Quiz() {
   const [questions, setQuestions] = useState([]);
@@ -23,6 +24,15 @@ export default function Quiz() {
     setScore(0)
   }
 
+  const buttonColor = {
+    'right': 'green',
+    'wrong': 'red',
+    'unclicked': "text-left py-3 px-4 h-auto whitespace-normal bg-newpurple-500 text-white rounded-md hover:bg-blue-600 max-w-96"
+  }
+
+  const handleQuizButtonClick = (e) => {
+    return 
+  }
   const handleNumberChange = (e) => {
     setQuestionsNumber(e.target.value);
   };
@@ -137,12 +147,8 @@ export default function Quiz() {
                       <div className="flex flex-col space-y-2">
                         {question.answer.map((option, idx) => (
                           // <li key={idx}>{option}</li>
-                          <button
-                            className="text-left py-3 px-4 h-auto whitespace-normal bg-blue-500 text-white rounded-md hover:bg-blue-600 max-w-96"
-                            key={idx}
-                          >
-                            {option}
-                          </button>
+                          <QuizButton key={idx} isCorrect={option === question.key}
+                          text={option} />
                         ))}
                       </div>
                       <p className="text-green-500">Answer: {question.key}</p>
