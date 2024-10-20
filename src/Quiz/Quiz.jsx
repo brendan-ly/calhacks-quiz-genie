@@ -116,17 +116,22 @@ export default function Quiz() {
 
               <div className="mt-4">
                 {response.questions.map((question, index) => (
-
                   <div key={index} className="mb-4">
+                    <p className="center-align font-bold mb-3">
+                      {question.question}
+                    </p>
 
-                    <p className="font-bold">{question.question}</p>
-
-                    <ul>
+                    <div className="flex flex-col space-y-2">
                       {question.answer.map((option, idx) => (
-                        <li key={idx}>{option}</li>
-                        
+                        // <li key={idx}>{option}</li>
+                        <button
+                          className="text-left py-3 px-4 h-auto whitespace-normal bg-blue-500 text-white rounded-md hover:bg-blue-600 max-w-64"
+                          key={idx}
+                        >
+                          {option}
+                        </button>
                       ))}
-                    </ul>
+                    </div>
                     <p className="text-green-500">Answer: {question.key}</p>
                   </div>
                 ))}
