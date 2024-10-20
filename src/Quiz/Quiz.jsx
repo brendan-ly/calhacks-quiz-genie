@@ -56,7 +56,7 @@ export default function Quiz() {
           <div className="flex justify-center mt-4">
             <input
               type="text"
-              placeholder="Enter your notes, or a subject"
+              placeholder="Enter your notes, or a subject!"
               className={INPUT_CLASS}
               value={inputText}
               onChange={handleInputChange}
