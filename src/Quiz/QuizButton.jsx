@@ -13,8 +13,11 @@ const QuizButton = ({
     const [buttonStatus, setButtonStatus] = useState(status)
     const [buttonDisabled, setButtonDisabled] = useState(false);
     const handleMouseOver = () => {
-        if (setColor('#1E88E5')
+        if (buttonStatus === 'unclicked') {
+            (setColor('#1E88E5'));
+        }
     }
+    
     const handleMouseOut = () => {
         setColor(colorToStatus[buttonStatus]);
     }
@@ -22,6 +25,7 @@ const QuizButton = ({
     const handleClick = () => {
         isCorrect ? setButtonStatus('right') : setButtonStatus('wrong');
     }
+
     const colorToStatus = {
         'unclicked': '#423B70',
         'right': '#699742',
