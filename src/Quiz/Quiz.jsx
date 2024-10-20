@@ -67,11 +67,13 @@ export default function Quiz() {
       </div>
 
       <div className="p-8">
+         <div>
           <h1 className="text-xl text-center mt-4 font-mono">
             What can I quiz you on today?
           </h1>
+         </div>
           
-         <button className="mt-4 px-6 py-2 bg-newpurple-700 text-white font-semibold rounded-lg shadow-md hover:bg-newpurple-500 focus:outline-none focus:ring-2 focus:ring-opacity-75">Submit</button>
+         <button class="mt-4 px-6 py-2 bg-newpurple-700 text-white font-semibold rounded-lg shadow-md hover:bg-newpurple-500 focus:outline-none focus:ring-2 focus:ring-opacity-75">Submit</button>
 
          <div className="inline-flex justify-center mt-4">
          <input
@@ -80,7 +82,7 @@ export default function Quiz() {
             type="text"
             className="w-full indent-2 rounded-md border-0 py-1.5 text-newgrey-900 shadow-sm ring-1 ring-inset ring-newpurple-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-newpurple-500 sm:text-sm sm:leading-6"
           />
-          <textarea class="resize-both rounded-md"></textarea>
+          <textarea class="resize-y rounded-md"></textarea>
          </div>
          
        </div>
