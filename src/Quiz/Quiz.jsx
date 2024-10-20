@@ -8,13 +8,35 @@ export default function Quiz() {
   const [questions, setQuestions] = useState([]);
   const [inputText, setInputText] = useState("");
   const [response, setResponse] = useState(null);
+
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+
   const [score, setScore] = useState(0);
   const [quizStarted, setQuizStarted] = useState(false);
   const [quizFinished, setQuizFinished] = useState(false);
-  const [loading, setLoading] = useState(true);
 
   const [questionNumber, setQuestionsNumber] = useState("");
+
+  const [selectedAnswers, setSelectedAnswers] = useState({});
+
+  const [total, setTotal] = useState("");
+
+  const handleAnswer = (question, answer) => {
+    console.log(answer);
+    console.log(question.key);
+
+    if (answer === question.key) {
+      console.log("Correct answer")
+      setScore(score + 1)
+    }
+
+    // if (index < questions.length - 1) {
+    //   setCurrentQuestionIndex(currentQuestionIndex + 1)
+    // } else {
+    //   setQuizFinished(true)
+    // }
+
+  }
 
   const startQuiz = () => {
     setQuizStarted(true)
@@ -36,11 +58,10 @@ export default function Quiz() {
       });
       console.log(res.data);
       setResponse(res.data);
-      setLoading(false)
+      console.log();
 
     } catch (error) {
       console.error("There was an error!", error);
-      setLoading(false)
     }
   };
 
@@ -138,8 +159,9 @@ export default function Quiz() {
                         {question.answer.map((option, idx) => (
                           // <li key={idx}>{option}</li>
                           <button
-                            className="text-left py-3 px-4 h-auto whitespace-normal bg-blue-500 text-white rounded-md hover:bg-blue-600 max-w-96"
+                            className="text-left py-3 px-4 h-auto whitespace-normal bg-newpurple-500 text-white rounded-md hover:bg-blue-600 max-w-96"
                             key={idx}
+                            onClick = {() => {handleAnswer(question, option)}}
                           >
                             {option}
                           </button>
