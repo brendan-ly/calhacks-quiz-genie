@@ -9,20 +9,35 @@ export default function Quiz() {
   const [inputText, setInputText] = useState("");
   const [response, setResponse] = useState(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [score, setScore] = useState(0);
   const [quizStarted, setQuizStarted] = useState(false);
   const [quizFinished, setQuizFinished] = useState(false);
   const [loading, setLoading] = useState(true);
+
+  const [questionNumber, setQuestionsNumber] = useState("");
+
+  const startQuiz = () => {
+    setQuizStarted(true)
+    setQuizFinished(false)
+    setCurrentQuestionIndex(0)
+    setScore(0)
+  }
+
+  const handleNumberChange = (e) => {
+    setQuestionsNumber(e.target.value);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       // Set response from Flask API
       const res = await axios.post("http://localhost:5000/send-text", {
-        inputText,
+        inputText, questionNumber
       });
       console.log(res.data);
       setResponse(res.data);
       setLoading(false)
+
     } catch (error) {
       console.error("There was an error!", error);
       setLoading(false)
@@ -92,6 +107,15 @@ export default function Quiz() {
               value={inputText}
               onChange={handleInputChange}
             />
+            <input
+              type="number"
+              placeholder="Number of questions"
+              className={"w-full max-w-96 indent-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-newpurple-500 sm:text-sm sm:leading-6"}
+              value={questionNumber}
+              onChange={handleNumberChange}
+              max={10}
+              min={1}
+            /> 
             <button
               className="bg-newpurple-500 hover:bg-newpurple-700 text-white px-4 py-2 rounded-md"
               onClick={handleSubmit}
@@ -99,49 +123,35 @@ export default function Quiz() {
               Submit
             </button>
           </form>
-          {/* <div className="flex justify-center mt-4">
-            <input // set to output later
-              type="text"
-              placeholder="Assistant feedback"
-              className="absolute bottom-2 w-full max-w-2xl indent-2 pt-10 rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-newpurple-500 sm:text-sm sm:leading-6"
-            />
-          </div> */}
-          {response && (
-            <>
-              {/* {JSON.stringify(response)} */}
 
-              {/* <ul>
-          
-          {response.questions.map((q) => <li>
-            {JSON.stringify(q)}
-          </li>)}
+            {response && (
+              <>
 
-        </ul> */}
+                <div className="mt-4">
+                  {response.questions.map((question, index) => (
+                    <div key={index} className="mb-4">
+                      <p className="center-align font-bold mb-3">
+                        {index + 1}. {question.question}
+                      </p>
 
-              <div className="mt-4">
-                {response.questions.map((question, index) => (
-                  <div key={index} className="mb-4">
-                    <p className="center-align font-bold mb-3">
-                      {question.question}
-                    </p>
-
-                    <div className="flex flex-col space-y-2">
-                      {question.answer.map((option, idx) => (
-                        // <li key={idx}>{option}</li>
-                        <button
-                          className="text-left py-3 px-4 h-auto whitespace-normal bg-blue-500 text-white rounded-md hover:bg-blue-600 max-w-96"
-                          key={idx}
-                        >
-                          {option}
-                        </button>
-                      ))}
+                      <div className="flex flex-col space-y-2">
+                        {question.answer.map((option, idx) => (
+                          // <li key={idx}>{option}</li>
+                          <button
+                            className="text-left py-3 px-4 h-auto whitespace-normal bg-blue-500 text-white rounded-md hover:bg-blue-600 max-w-96"
+                            key={idx}
+                          >
+                            {option}
+                          </button>
+                        ))}
+                      </div>
+                      <p className="text-green-500">Answer: {question.key}</p>
                     </div>
-                    <p className="text-green-500">Answer: {question.key}</p>
-                  </div>
-                ))}
-              </div>
-            </>
-          )}
+                  ))}
+                </div>
+              </>
+            )}
+
         </div>
       </div>
     </div>
