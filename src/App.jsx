@@ -2,7 +2,7 @@ import { useState } from 'react'
 import HomePage from './Home Page/HomePage'
 import './index.css'
 
-function App() {
+export default function App() {
   const [count, setCount] = useState(0)
 
   return (
@@ -11,5 +11,3 @@ function App() {
     </>
   )
 }
-
-export default App
