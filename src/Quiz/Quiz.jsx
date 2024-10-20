@@ -7,10 +7,12 @@ import logo from "/src/img/logo-v2-transparent.png";
 export default function Quiz() {
   const [questions, setQuestions] = useState([]);
   const [inputText, setInputText] = useState("");
-  // const [response, setResponse] = useState("");
   const [response, setResponse] = useState(null);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [quizStarted, setQuizStarted] = useState(false);
+  const [quizFinished, setQuizFinished] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  // boilerplate flask
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent page reload on form submit
     try {
@@ -20,12 +22,14 @@ export default function Quiz() {
       });
       console.log(res.data);
       setResponse(res.data);
+      setLoading(false)
     } catch (error) {
       console.error("There was an error!", error);
+      setLoading(false)
     }
   };
-  const INPUT_CLASS =
-    "w-full max-w-2xl indent-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-newpurple-500 sm:text-sm sm:leading-6";
+
+  const INPUT_CLASS = "w-full max-w-2xl indent-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-newpurple-500 sm:text-sm sm:leading-6";
 
   const handleInputChange = (e) => {
     setInputText(e.target.value);
@@ -95,13 +99,13 @@ export default function Quiz() {
               Submit
             </button>
           </form>
-          <div className="flex justify-center mt-4">
+          {/* <div className="flex justify-center mt-4">
             <input // set to output later
               type="text"
               placeholder="Assistant feedback"
               className="absolute bottom-2 w-full max-w-2xl indent-2 pt-10 rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-newpurple-500 sm:text-sm sm:leading-6"
             />
-          </div>
+          </div> */}
           {response && (
             <>
               {/* {JSON.stringify(response)} */}
@@ -125,7 +129,7 @@ export default function Quiz() {
                       {question.answer.map((option, idx) => (
                         // <li key={idx}>{option}</li>
                         <button
-                          className="text-left py-3 px-4 h-auto whitespace-normal bg-blue-500 text-white rounded-md hover:bg-blue-600 max-w-64"
+                          className="text-left py-3 px-4 h-auto whitespace-normal bg-blue-500 text-white rounded-md hover:bg-blue-600 max-w-96"
                           key={idx}
                         >
                           {option}
