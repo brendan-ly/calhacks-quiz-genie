@@ -4,7 +4,7 @@ import google.generativeai as genai
 import os
 import json
 
-os.environ["GEMINI_API_KEY"] = "AIzaSyD0tjgK4Id32UYGirw1fE6hHwD6SQCNbQk"
+os.environ["GEMINI_API_KEY"];
 
 genai.configure(api_key=os.environ["GEMINI_API_KEY"])
 
